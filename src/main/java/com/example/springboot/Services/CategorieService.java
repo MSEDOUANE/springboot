@@ -15,33 +15,31 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.example.springboot.Repos.CategorieRepo;
 import com.example.springboot.Repos.UserRepository;
+import com.example.springboot.models.Categorie;
 import com.example.springboot.models.User;
 
 @Service
-public class UserService  {
+public class CategorieService  {
 
 	@Autowired
-	private UserRepository userRepository;
+	private CategorieRepo categorieRepo;
 
-	public List<User> findAll() {
+	public Iterable<Categorie> findAll() {
 
-		Iterable<User> it = userRepository.findAll();
 
-		ArrayList<User> users = new ArrayList<User>();
-		it.forEach(e -> users.add(e));
-
-		return users;
+		return categorieRepo.findAll();
 	}
 
 	public Long count() {
 
-		return userRepository.count();
+		return categorieRepo.count();
 	}
 
 	public void deleteById(Long userId) {
 
-		userRepository.deleteById(userId);
+		categorieRepo.deleteById(userId);
 	}
 
 
